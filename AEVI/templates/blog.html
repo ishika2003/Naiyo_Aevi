@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Journal - Aevi | Nordic Skincare Insights{% endblock %}
+
+{% block head %}
+<style>
+.blog-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.blog-title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #134fc2;
+    margin-bottom: 20px;
+}
+
+.blog-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 30px;
+}
+
+.blog-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.blog-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #134fc2;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.blog-excerpt {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    color: #134fc2;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.coming-soon {
+    text-align: center;
+    padding: 80px 20px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 2.5rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin: 40px 0;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Blog Hero Section -->
+<section class="blog-hero">
+    <div class="container">
+        <h1 class="blog-title">JOURNAL</h1>
+        <p class="blog-subtitle">Insights, tips, and stories from the world of Nordic skincare</p>
+    </div>
+</section>
+
+<!-- Blog Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="blog-grid">
+            <!-- Sample Blog Posts -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='images/AEVI/Page1.webp') }}" alt="Nordic Skincare" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">December 15, 2024</div>
+                    <h2 class="blog-card-title">The Science Behind Nordic Skincare</h2>
+                    <p class="blog-excerpt">Discover how the harsh Nordic climate has led to some of the most effective skincare ingredients in the world. From sea buckthorn to cloudberry, learn about the botanical treasures that make Nordic skincare so special.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='images/AEVI/Page2.webp') }}" alt="Sensitive Skin Care" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">December 8, 2024</div>
+                    <h2 class="blog-card-title">Caring for Sensitive Skin: A Gentle Approach</h2>
+                    <p class="blog-excerpt">Learn how to build a skincare routine that works for sensitive skin. Our dermatologist-approved tips will help you achieve healthy, radiant skin without irritation.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='images/AEVI/Page3.webp') }}" alt="Sustainable Beauty" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">December 1, 2024</div>
+                    <h2 class="blog-card-title">Sustainability in Beauty: Our Commitment</h2>
+                    <p class="blog-excerpt">At AEVI, we believe in creating products that are as good for the planet as they are for your skin. Learn about our sustainable practices and eco-friendly packaging.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='images/AEVI/two divs/Aevi-Web-Homepage-Square-01.webp') }}" alt="Skincare Routine" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">November 24, 2024</div>
+                    <h2 class="blog-card-title">Building Your Perfect Skincare Routine</h2>
+                    <p class="blog-excerpt">From cleansing to moisturizing, discover how to create a skincare routine that works for your unique skin needs. Plus, learn the best order to apply your products.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='images/AEVI/two divs/Aevi-Web-Homepage-Square-03.webp') }}" alt="Ingredient Spotlight" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">November 17, 2024</div>
+                    <h2 class="blog-card-title">Ingredient Spotlight: Hyaluronic Acid</h2>
+                    <p class="blog-excerpt">Dive deep into one of skincare's most beloved ingredients. Learn how hyaluronic acid works, its benefits, and how to incorporate it into your routine for maximum hydration.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='images/AEVI/two divs/2.png') }}" alt="Winter Skincare" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-date">November 10, 2024</div>
+                    <h2 class="blog-card-title">Winter Skincare: Protecting Your Skin in Cold Weather</h2>
+                    <p class="blog-excerpt">Cold weather can wreak havoc on your skin. Learn how to adapt your skincare routine for winter and keep your skin healthy and hydrated all season long.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="coming-soon">
+            <h3>More articles coming soon</h3>
+            <p>Subscribe to our newsletter to be the first to read our latest insights and tips.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

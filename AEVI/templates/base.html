@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}AEVI | Pure Nordic Skincare for Sensitive Skin | Gentle & Sustainable{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    <!-- Static files with Flask url_for -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Additional CSS -->
+    {% block head %}{% endblock %}
+    {% block additional_css %}{% endblock %}
+    
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+    {% block additional_head_scripts %}{% endblock %}
+</head>
+<body>
+    
+    <!-- Preloader -->
+    <div class="preloader-wrapper" style="background-color: transparent;">
+        <div class="preloader"></div>
+    </div>
+
+    <!-- Search Popup -->
+    <div class="search-popup">
+        <div class="search-popup-container">
+            <form role="search" method="get" class="search-form" action="{{ url_for('shop') }}">
+                <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
+                <button type="submit" class="search-submit">
+                    <a href="#"><i class="icon icon-search"></i></a>
+                </button>
+            </form>
+
+            <h5 class="cat-list-title">Browse Categories</h5>
+            <ul class="cat-list">
+                <li class="cat-list-item">
+                    <a href="{{ url_for('category_products', category_name='cleansers-masks') }}" title="Cleansers + Masks">Cleansers + Masks</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="{{ url_for('category_products', category_name='serums-oils') }}" title="Serums + Oils">Serums + Oils</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="{{ url_for('category_products', category_name='balms') }}" title="Balms">Balms</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="{{ url_for('category_products', category_name='treatments') }}" title="Treatments">Treatments</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="{{ url_for('category_products', category_name='body') }}" title="Body">Body</a>
+                </li>
+                <li class="cat-list-item">
+                    <a href="{{ url_for('get_bestsellers') }}" title="Best Sellers">Best Sellers</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    {% include 'navbar.html' %}
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages" style="position: fixed; top: 80px; right: 20px; z-index: 10000;">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else 'danger' if category == 'error' else 'info' }}" 
+                         style="background: {% if category == 'success' %}#d4edda{% elif category == 'error' %}#f8d7da{% else %}#d1ecf1{% endif %}; 
+                                border: 1px solid {% if category == 'success' %}#c3e6cb{% elif category == 'error' %}#f5c6cb{% else %}#bee5eb{% endif %}; 
+                                color: {% if category == 'success' %}#155724{% elif category == 'error' %}#721c24{% else %}#0c5460{% endif %}; 
+                                padding: 10px 15px; border-radius: 5px; margin-bottom: 10px; max-width: 300px;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Custom JavaScript for Flask integration -->
+    <script>
+        // Flash message auto-hide
+        setTimeout(function() {
+            const flashMessages = document.querySelector('.flash-messages');
+            if (flashMessages) {
+                flashMessages.style.display = 'none';
+            }
+        }, 5000);
+
+        // Newsletter subscription
+        function subscribeNewsletter(email) {
+            fetch('/subscribe-newsletter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                } else {
+                    alert(data.error || 'An error occurred');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        }
+
+        // Contact form submission
+        function submitContactForm(formData) {
+            fetch('/submit-contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = '{{ url_for("thank_you") }}';
+                } else {
+                    alert(data.error || 'An error occurred');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        }
+
+        // Load products dynamically
+        function loadProducts(endpoint, containerId) {
+            fetch(endpoint)
+            .then(response => response.json())
+            .then(products => {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    renderProducts(products, container);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading products:', error);
+            });
+        }
+
+        function renderProducts(products, container) {
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image_main}" alt="${product.name}" class="main-img">
+                        ${product.image_hover ? `<img src="${product.image_hover}" alt="${product.name}" class="hover-img">` : ''}
+                        ${product.is_bestseller ? '<span class="label">BESTSELLER</span>' : ''}
+                        ${product.is_new ? '<span class="label">NEW</span>' : ''}
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name} <span class="price">€${product.price}</span></h3>
+                        <p>${product.description}</p>
+                        <div class="stars">★★★★★ <span>(${product.review_count})</span></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // User authentication
+        function signIn(email, password) {
+            fetch('/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    alert(data.error || 'Sign in failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        }
+
+        function signUp(userData) {
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '{{ url_for("home") }}';
+                } else {
+                    alert(data.error || 'Sign up failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        }
+    </script>
+    
+    {% block additional_scripts %}{% endblock %}
+</body>
+</html>

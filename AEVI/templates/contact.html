@@ -1,0 +1,440 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Aevi | Get in Touch{% endblock %}
+
+{% block head %}
+<!-- Contact specific styles -->
+<style>
+  .contact-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .contact-section {
+    padding: 60px 0;
+  }
+  
+  .contact-info {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+  
+  .contact-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    background: #f0f8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    font-size: 20px;
+    color: #2d5a27;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-label {
+    font-weight: 600;
+    color: #2d5a27;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #2d5a27;
+    box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+  }
+  
+  .form-control.error {
+    border-color: #dc3545;
+  }
+  
+  textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .submit-btn {
+    background: #2d5a27;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    background: #1e3a1a;
+  }
+  
+  .submit-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    display: none;
+  }
+  
+  .error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    display: none;
+  }
+  
+  .faq-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+  }
+  
+  .faq-item {
+    background: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-question {
+    background: #2d5a27;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    margin: 0;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    background: #1e3a1a;
+  }
+  
+  .faq-answer {
+    padding: 20px;
+    display: none;
+    line-height: 1.6;
+  }
+  
+  .faq-answer.show {
+    display: block;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Contact Hero Section -->
+<section class="contact-hero">
+  <div class="container">
+    <h1 class="display-4 mb-3">Get in Touch</h1>
+    <p class="lead">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="container">
+    <div class="row">
+      <!-- Contact Information -->
+      <div class="col-lg-4 mb-5">
+        <div class="contact-info">
+          <h3 class="mb-4">Contact Information</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h5>Address</h5>
+              <p class="mb-0">AEVI WELLNESS AB<br>
+              KLOCKA 185<br>
+              837 71 DUVED<br>
+              SWEDEN</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h5>Email</h5>
+              <p class="mb-0">hello@liveaevi.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <h5>Business Hours</h5>
+              <p class="mb-0">Monday - Friday: 9:00 AM - 5:00 PM (CET)<br>
+              Saturday - Sunday: Closed</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-share-alt"></i>
+            </div>
+            <div>
+              <h5>Follow Us</h5>
+              <div class="social-links">
+                <a href="https://www.instagram.com/aeviwellness" target="_blank" class="me-3">
+                  <i class="fab fa-instagram"></i> Instagram
+                </a><br>
+                <a href="https://www.facebook.com/aeviwellness" target="_blank" class="me-3">
+                  <i class="fab fa-facebook"></i> Facebook
+                </a><br>
+                <a href="https://www.tiktok.com/@aeviwellness" target="_blank">
+                  <i class="fab fa-tiktok"></i> TikTok
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="col-lg-8">
+        <div class="contact-form">
+          <h3 class="mb-4">Send us a Message</h3>
+          
+          <div id="success-message" class="success-message">
+            <i class="fas fa-check-circle"></i> Thank you for your message! We'll get back to you soon.
+          </div>
+          
+          <div id="error-message" class="error-message">
+            <i class="fas fa-exclamation-triangle"></i> <span id="error-text">Something went wrong. Please try again.</span>
+          </div>
+          
+          <form id="contact-form">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name" class="form-label">Full Name *</label>
+                  <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="subject" class="form-label">Subject</label>
+                  <select id="subject" name="subject" class="form-control">
+                    <option value="">Select a subject</option>
+                    <option value="Product Inquiry">Product Inquiry</option>
+                    <option value="Order Support">Order Support</option>
+                    <option value="Skincare Advice">Skincare Advice</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Media Inquiry">Media Inquiry</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message *</label>
+              <textarea id="message" name="message" class="form-control" placeholder="Tell us how we can help you..." required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span id="btn-text">Send Message</span>
+              <span id="btn-loading" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i> Sending...
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+          <h4 class="faq-question" onclick="toggleFaq(this)">
+            How do I know which products are right for my sensitive skin?
+          </h4>
+          <div class="faq-answer">
+            <p>All our products are dermatologically tested and formulated specifically for sensitive skin. We recommend starting with our Hyaluronic Acid Face Serum and All-Over Balm, which are gentle and suitable for all skin types. For personalized recommendations, feel free to contact us with details about your skin concerns.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <h4 class="faq-question" onclick="toggleFaq(this)">
+            What makes AEVI products different from other skincare brands?
+          </h4>
+          <div class="faq-answer">
+            <p>AEVI products are crafted with pure Nordic ingredients that thrive in harsh climates, making them exceptionally resilient and effective. Our formulations are clinically tested, dermatologically approved, and specifically designed for sensitive skin without compromising on results.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <h4 class="faq-question" onclick="toggleFaq(this)">
+            Do you offer international shipping?
+          </h4>
+          <div class="faq-answer">
+            <p>Yes, we ship to many countries worldwide. Shipping costs and delivery times vary by location. Free shipping is available for orders over €150 within Europe. Please check our shipping policy for more details about your specific region.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <h4 class="faq-question" onclick="toggleFaq(this)">
+            What is your return policy?
+          </h4>
+          <div class="faq-answer">
+            <p>We offer a 30-day return policy for unopened products. If you're not satisfied with your purchase, please reach out to us within 30 days of delivery, and we'll help you with the return process. Your satisfaction is our priority.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <h4 class="faq-question" onclick="toggleFaq(this)">
+            Are AEVI products cruelty-free and sustainable?
+          </h4>
+          <div class="faq-answer">
+            <p>Absolutely! We're committed to cruelty-free practices and never test on animals. Our packaging is designed to be eco-friendly, and we offer refill programs for several products to minimize environmental impact. Sustainability is at the core of our Nordic values.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Contact form submission
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnLoading = document.getElementById('btn-loading');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    
+    // Hide previous messages
+    successMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
+    
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Submit form
+    fetch('/submit-contact', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            successMessage.style.display = 'block';
+            document.getElementById('contact-form').reset();
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            throw new Error(data.error || 'Something went wrong');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('error-text').textContent = error.message || 'Something went wrong. Please try again.';
+        errorMessage.style.display = 'block';
+        // Scroll to error message
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+    });
+});
+
+// FAQ toggle function
+function toggleFaq(element) {
+    const answer = element.nextElementSibling;
+    const isVisible = answer.classList.contains('show');
+    
+    // Close all FAQ answers
+    document.querySelectorAll('.faq-answer').forEach(item => {
+        item.classList.remove('show');
+    });
+    
+    // Open clicked FAQ if it wasn't already open
+    if (!isVisible) {
+        answer.classList.add('show');
+    }
+}
+</script>
+{% endblock %}
