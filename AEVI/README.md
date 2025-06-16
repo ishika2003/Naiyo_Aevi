@@ -4,8 +4,8 @@ A complete Flask backend + frontend integration for AEVI's Nordic skincare e-com
 
 ## ✨ Features
 
-### 🏠 **Frontend (Preserved & Enhanced)**
-- **Homepage unchanged** - Original index.html maintained exactly as provided
+### 🏠 **Frontend**
+
 - **Multi-page system** - About, Shop, Contact, Blog pages with SEO-friendly URLs
 - **Responsive design** - Mobile-first approach with existing CSS/JS preserved
 - **Dynamic content loading** - Products loaded via Flask API endpoints
@@ -170,12 +170,6 @@ DATABASE_URL=sqlite:///aevi.db
 - `POST /submit-contact` - Contact form submission
 - `POST /subscribe-newsletter` - Newsletter subscription
 - `POST /api/newsletter/unsubscribe` - Newsletter unsubscribe
-
-## 🎨 Frontend Integration
-
-### Preserved Original Design
-The original `index.html` homepage is **completely unchanged** to maintain the existing design and functionality.
-
 ### Flask URL Integration
 ```html
 <!-- Navigation links -->
@@ -304,11 +298,7 @@ For questions or issues:
 - **Issues**: GitHub Issues
 - **Documentation**: This README
 
-## 📄 License
 
-This project is proprietary software for AEVI Nordic Skincare.
-
----
 
 ## 🌟 Key Achievements
 
