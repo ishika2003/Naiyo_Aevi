@@ -78,8 +78,8 @@
       <a href="#" style="font-weight: 500; text-decoration: none;">DISCOVER</a>
     </div>
     <div class="logo-sticky" style="position: absolute; left: 50%; transform: translateX(-50%);">
-      <a href="{{ url_for('home') }}">
-        <img src="{{ url_for('static', filename='images/AEVI/aevi-logo-100_black.svg') }}" alt="AEVI Logo" style="max-height: 40px;">
+      <a href="{{ url_for('home') }}" style="text-decoration: none;">
+        <img src="{{ url_for('static', filename='images/AEVI/aevi-logo-100_black.svg') }}" alt="AEVI Logo" style="max-height: 40px; text-decoration: none;">
       </a>
     </div>
     <div class="nav-right" style="display: flex; gap: 1.5rem; align-items: center;">
@@ -208,7 +208,7 @@
       <!-- Products Section - Enhanced with Flask integration -->
       <style>
         .product-scroll-container {
-          overflow-x: auto;
+          overflow: hidden;
           white-space: nowrap;
           padding: 2rem;
         }
@@ -287,6 +287,10 @@
           font-size: 14px;
           color: #000;
         }
+          .stars2 {
+          font-size: 14px;
+          color:white;
+        }
 
         .product-hover-popup {
           position: absolute;
@@ -332,28 +336,412 @@
       </div>
 
       <!-- Rest of the original content preserved -->
-      <div style="display: flex; margin: 20px;">
-        <div style="flex: 1; margin-right: 10px;">
-          <img src="{{ url_for('static', filename='images/AEVI/two divs/Aevi-Web-Homepage-Square-01.png') }}" alt="Image 1" style="width: 100%; height: auto;">
+
+
+      <style>
+  .aevi-block-section {
+  width: 100vw;
+  overflow: hidden;
+}
+
+.aevi-block-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.aevi-block-image,
+.aevi-block-text {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.aevi-block-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aevi-block-text {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+.aevi-block-text h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.aevi-block-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.aevi-block-readmore {
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: black;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.aevi-block-readmore:hover {
+  color: #134fc2;
+}
+
+
+</style>
+
+ <div class="aevi-block-section">
+
+  <!-- Block 1 -->
+  <div class="aevi-block-container">
+    <div class="aevi-block-image">
+      <img src="{{ url_for('static', filename='images/AEVI/two_divs/Aevi-Web-Homepage-Square-01.webp') }}" alt="Product 1" />
+    </div>
+    <div class="aevi-block-text">
+      <h2>CLEAN, GENTLE<br>+ RESULTS-DRIVEN</h2>
+      <p>
+        Aevi is made with pure, therapeutic ingredients from Nordic nature. Our performance-driven formulas are clinically tested to ensure efficacy and visible results while still being gentle for sensitive skin.
+      </p>
+      <a href="{{ url_for('about') }}" class="aevi-block-readmore">READ MORE</a>
+    </div>
+  </div>
+
+  <!-- Block 2 -->
+  <div class="aevi-block-container">
+    <div class="aevi-block-text">
+      <h2>FOR SENSITIVE <br> SKIN, BY<br> SENSITIVE SKIN</h2>
+      <p>
+        Aevi is dermatologically tested and suitable for even the most sensitive skin.<br><br>
+        Our skincare is expertly formulated to soothe, hydrate, nourish and strengthen the skin because we believe building healthy, resilient skin is the key to naturally radiant beauty and well-ageing.
+      </p>
+      <a href="{{ url_for('about') }}" class="aevi-block-readmore">READ MORE</a>
+    </div>
+    <div class="aevi-block-image">
+      <img src="{{ url_for('static', filename='images/AEVI/two_divs/Aevi-Web-Homepage-Square-03.webp') }}" alt="Product 2" />
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .review{
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  </style>
+
+<div class="logo-marquee">
+        <div class="logo-track">
+          <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I can't get over the Eye Elixir by Aevi, it makes<br>
+                  me look awake even on the nights that I don't<br>
+                  get enough sleep and it has quickly become an<br>
+                  important part of my morning skin routine!<br><br>
+              </p>
+              <p style="font-size: 8px;">KIRSTEN, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I loveeee the Lumi Balm in the winter. I layer<br>
+                  this over the face oil on high points of my face<br>
+                  and it gives me the most beautiful dewy skin<br>
+                  with the perfect amount of glow without<br>
+                  sparkle. It's amazing for my dry skin.<br><br>
+              </p>
+              <p style="font-size: 8px;">RADHIKA, DERMATOLOGIST</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I have no words for how amazing the<br>
+                  Nourishing Face Oi/is! I can see my skin texture<br>
+                  improving already!<br><br>
+
+              </p>
+              <p style="font-size: 8px;">ANNETTE, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I love the Nourishing Face Oil I have struggled<br>
+                  with eczema all my life and these natural<br>
+                  ingredients don't bother my sensitive skin at all.<br>
+                  I use this oil every day and night. I have<br>
+                  replaced harsh toners with this soothing oil<br>
+                  and I am loving it!<br><br>
+              </p>
+              <p style="font-size: 8px;">WEDNESDAY, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I don't go anywhere without the Clean Hand<br>
+                  Sanitizer. It's my peace of mind.<br><br>
+              </p>
+              <p style="font-size: 8px;">NATASHA, VERIFIED BUYER</p>
+            </div>
+
+             
+          <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I can't get over the Eye Elixir by Aevi, it makes<br>
+                  me look awake even on the nights that I don't<br>
+                  get enough sleep and it has quickly become an<br>
+                  important part of my morning skin routine!<br><br>
+              </p>
+              <p style="font-size: 8px;">KIRSTEN, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I loveeee the Lumi Balm in the winter. I layer<br>
+                  this over the face oil on high points of my face<br>
+                  and it gives me the most beautiful dewy skin<br>
+                  with the perfect amount of glow without<br>
+                  sparkle. It's amazing for my dry skin.<br><br>
+              </p>
+              <p style="font-size: 8px;">RADHIKA, DERMATOLOGIST</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I have no words for how amazing the<br>
+                  Nourishing Face Oil is! I can see my skin texture<br>
+                  improving already!<br><br>
+
+              </p>
+              <p style="font-size: 8px;">ANNETTE, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I love the Nourishing Face Oil I have struggled<br>
+                  with eczema all my life and these natural<br>
+                  ingredients don't bother my sensitive skin at all.<br>
+                  I use this oil every day and night. I have<br>
+                  replaced harsh toners with this soothing oil<br>
+                  and I am loving it!<br><br>
+              </p>
+              <p style="font-size: 8px;">WEDNESDAY, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I don't go anywhere without the Clean Hand<br>
+                  Sanitizer. It's my peace of mind.<br><br>
+              </p>
+              <p style="font-size: 8px;">NATASHA, VERIFIED BUYER</p>
+            </div>
+
         </div>
-        <div style="flex: 1; margin-left: 10px; padding: 20px; background-color: #f8f9fa;">
-          <h2 style="line-height: normal; margin-bottom: 10px;">CLEAN, GENTLE + RESULTS-DRIVEN</h2>
-          <p>Aevi is made with pure, therapeutic ingredients from Nordic nature. Our performance-driven formulas are clinically tested to ensure efficacy and visible results while still being gentle for sensitive skin.</p>
-          <a href="{{ url_for('about') }}" style="color: #134fc2; text-decoration: underline;">READ MORE</a>
-        </div>
+      </div>
+      
+
+       <div style="margin: 5px 10px;">
+        <h2 style="line-height: normal; margin-bottom: 0;">GIFTS, SETS + BUNDLES</h2>
+        <p>Curated edits of bestselling clean beauty</p>
       </div>
 
-      <div style="display: flex; margin: 20px;">
-        <div style="flex: 1; margin-right: 10px; padding: 20px; background-color: #f8f9fa;">
-          <h2 style="line-height: normal; margin-bottom: 10px;">FOR SENSITIVE SKIN, BY SENSITIVE SKIN</h2>
-          <p>Aevi is dermatologically tested and suitable for even the most sensitive skin.</p>
-          <p>Our skincare is expertly formulated to soothe, hydrate, nourish and strengthen the skin because we believe building healthy, resilient skin is the key to naturally radiant beauty and well-ageing.</p>
-          <a href="{{ url_for('about') }}" style="color: #134fc2; text-decoration: underline;">READ MORE</a>
-        </div>
-        <div style="flex: 1; margin-left: 10px;">
-          <img src="{{ url_for('static', filename='images/AEVI/two divs/Aevi-Web-Homepage-Square-03.png') }}" alt="Image 2" style="width: 100%; height: auto;">
-        </div>
+      <div class="product-scroll-container" id="bestsellers-container">
+        <!-- Dynamic content will be loaded here -->
       </div>
+
+          <style>
+      .aevi-footer {
+  background: #d5e0ea;
+  padding: 4rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #111;
+}
+
+.aevi-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: space-between;
+}
+
+.aevi-footer-left {
+  flex: 1 1 300px;
+  min-width: 300px;
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 2rem;
+}
+
+.footer-newsletter h4 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.footer-newsletter p {
+  font-size: 16px;
+  margin-bottom: 2rem;
+}
+
+.newsletter-input {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+}
+
+.newsletter-input input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  flex: 1;
+}
+
+.newsletter-input button {
+  border: none;
+  background: transparent;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.footer-payments {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-payments img {
+  height: 24px;
+}
+
+.footer-address {
+  font-size: 12px;
+  color: #333;
+  margin-top: 2rem;
+}
+
+.aevi-footer-links {
+  flex: 1 1 600px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.aevi-footer-links h5 {
+  font-size: 13px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.aevi-footer-links a {
+  display: block;
+  font-size: 16px;
+  color: #111;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.aevi-footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+    </style>
+
+
+    <footer class="aevi-footer">
+  <div class="aevi-footer-container">
+
+    <!-- Left Column -->
+    <div class="aevi-footer-left">
+      <img src="{{ url_for('static', filename='images/aevi_animated_logo_gif.webp') }}" alt="AEVI Logo" class="footer-logo" />
+
+      <div class="footer-newsletter">
+        <h4>LET'S CONNECT</h4>
+        <p>Subscribe to our newsletter and get 10% off your first order.</p>
+        <form method="post" action="#">
+          <div class="newsletter-input">
+            <input type="email" placeholder="Your email" required />
+            <button type="submit">SUBSCRIBE</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="footer-payments">
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/amex.png') }}" alt="Amex" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/apay.png') }}" alt="Apple Pay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/images.png') }}" alt="Google Pay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/mastercard.png') }}" alt="Mastercard" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/paypal.png') }}" alt="PayPal" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/maestro.png') }}" alt="Shop Pay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/amex.png') }}" alt="UnionPay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/visa.jpg') }}" alt="Visa" />
+      </div>
+
+      <p class="footer-address">
+        © 2025 Aevi Wellness - Aevi Wellness AB, Klocka 185, 837 71 Duved, Sweden
+      </p>
+    </div>
+
+    <!-- Right Columns -->
+    <div class="aevi-footer-links">
+      <div>
+        <h5>ABOUT</h5>
+        <a href="#">Story</a>
+        <a href="#">Stockists</a>
+        <a href="#">Contact</a>
+        <a href="#">Journal</a>
+      </div>
+
+      <div>
+        <h5>LEGAL</h5>
+        <a href="#">FAQ</a>
+        <a href="#">Terms</a>
+        <a href="#">Care</a>
+        <a href="#">Privacy</a>
+      </div>
+
+      <div>
+        <h5>SOCIAL MEDIA</h5>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
       <!-- Include modals for newsletter and auth -->
       {% include 'navbar.html' %}
