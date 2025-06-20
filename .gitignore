@@ -1,0 +1,18 @@
+# Virtual environment
+venv/
+.venv/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask cache and logs
+instance/
+*.log

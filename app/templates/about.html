@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}About - Aevi | Pure Nordic Skincare for Sensitive Skin{% endblock %}
+
+{% block head %}
+<!-- About specific styles -->
+<style>
+  .about-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  .about-content {
+    padding: 60px 0;
+  }
+  
+  .story-section {
+    margin-bottom: 60px;
+  }
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+  }
+  
+  .value-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .value-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: #f0f8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #2d5a27;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- About Hero Section -->
+<section class="about-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="display-4 mb-4">Pure Nordic Skincare for Sensitive Skin</h1>
+        <p class="lead">Born from the pristine landscapes of the Nordic region, Aevi brings you gentle, sustainable skincare that respects both your skin and the environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content">
+  <div class="container">
+    <!-- Our Story -->
+    <div class="story-section">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="mb-4">Our Story</h2>
+          <p class="mb-4">Aevi was founded with a simple yet powerful mission: to create pure, effective skincare that works harmoniously with sensitive skin. Drawing inspiration from the unspoiled Nordic wilderness, we harness the power of natural ingredients that have thrived in harsh climates for centuries.</p>
+          <p class="mb-4">Our journey began when our founder, struggling with sensitive skin, couldn't find products that were both gentle and effective. This led to years of research into Nordic botanicals and traditional remedies, resulting in our carefully crafted formulations.</p>
+          <p>Every product is dermatologically tested and clinically proven to deliver visible results while maintaining the gentleness that sensitive skin deserves.</p>
+        </div>
+        <div class="col-lg-6">
+          <img src="{{ url_for('static', filename='images/AEVI/about-story.jpg') }}" alt="Nordic landscape" class="img-fluid rounded">
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Values -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center mb-5">Our Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🌿</div>
+            <h4>Clean & Natural</h4>
+            <p>We use only the purest Nordic ingredients, free from harsh chemicals and synthetic additives that can irritate sensitive skin.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🔬</div>
+            <h4>Science-Backed</h4>
+            <p>Every formula is clinically tested and dermatologically approved to ensure both safety and efficacy for sensitive skin types.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">♻️</div>
+            <h4>Sustainable</h4>
+            <p>Our commitment to the environment is reflected in our sustainable sourcing, eco-friendly packaging, and refill programs.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h4>Inclusive</h4>
+            <p>Skincare for everyone. Our products are designed to work with all skin types, with special focus on sensitive and reactive skin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- For Sensitive Skin -->
+    <div class="story-section mt-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <h2 class="mb-4">For Sensitive Skin, By Sensitive Skin</h2>
+          <p class="mb-4">Aevi is dermatologically tested and suitable for even the most sensitive skin. Our skincare is expertly formulated to soothe, hydrate, nourish and strengthen the skin because we believe building healthy, resilient skin is the key to naturally radiant beauty and well-ageing.</p>
+          <p class="mb-4">We understand the frustration of sensitive skin - the trial and error, the reactions, the limited options. That's why every Aevi product undergoes rigorous testing to ensure it meets the highest standards of gentleness without compromising on results.</p>
+          <div class="mt-4">
+            <a href="{{ url_for('static.shop') }}" class="btn btn-primary btn-lg">Shop Our Products</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <img src="{{ url_for('static', filename='images/AEVI/sensitive-skin.jpg') }}" alt="Gentle skincare" class="img-fluid rounded">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section bg-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <h3 class="mb-3">Stay Connected</h3>
+        <p class="mb-4">Subscribe to our newsletter and get 10% off your first order, plus exclusive access to new products and skincare tips.</p>
+        <form id="newsletter-form" class="d-flex justify-content-center">
+          <div class="input-group" style="max-width: 400px;">
+            <input type="email" class="form-control" placeholder="Enter your email" id="newsletter-email" required>
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </div>
+        </form>
+        <small class="text-muted mt-2 d-block">Unsubscribe anytime. View our Privacy Policy.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Newsletter subscription
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value;
+    
+    fetch('/subscribe-newsletter', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success || data.message) {
+            alert('Thank you for subscribing! Check your email for your 10% discount code.');
+            document.getElementById('newsletter-email').value = '';
+        } else {
+            alert(data.error || 'Something went wrong. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+    });
+});
+</script>
+{% endblock %}
