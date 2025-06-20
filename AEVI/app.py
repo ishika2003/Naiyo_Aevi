@@ -569,45 +569,45 @@ def signin():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     """User sign up"""
+    form = SignupForm()
+
     if request.method == 'POST':
-        if request.is_json:
-            data = request.get_json()
-            email = data.get('email')
-            password = data.get('password')
-            first_name = data.get('first_name', '')
-            last_name = data.get('last_name', '')
-        else:
-            email = request.form.get('email')
-            password = request.form.get('password')
-            first_name = request.form.get('first_name', '')
-            last_name = request.form.get('last_name', '')
-        
-        if User.query.filter_by(email=email).first():
-            if request.is_json:
-                return jsonify({'error': 'Email already exists'}), 400
-            else:
+        if form.validate_on_submit():
+            email = form.email.data
+            password = form.password.data
+            first_name = form.first_name.data
+            last_name = form.last_name.data
+            subscribe_newsletter = form.subscribe_newsletter.data
+
+            if User.query.filter_by(email=email).first():
+                if request.is_json:
+                    return jsonify({'error': 'Email already exists'}), 400
                 flash('Email already registered', 'error')
-                return render_template('signup.html')
-        
-        user = User(
-            email=email,
-            password_hash=generate_password_hash(password),
-            first_name=first_name,
-            last_name=last_name
-        )
-        
-        db.session.add(user)
-        db.session.commit()
-        
-        login_user(user)
-        
-        if request.is_json:
-            return jsonify({'success': True, 'user': user.to_dict()})
-        else:
+                return render_template('signup.html', form=form)
+
+            user = User(
+                email=email,
+                password_hash=generate_password_hash(password),
+                first_name=first_name,
+                last_name=last_name,
+                subscribed_to_newsletter=subscribe_newsletter
+            )
+
+            db.session.add(user)
+            db.session.commit()
+
+            login_user(user)
+
+            if request.is_json:
+                return jsonify({'success': True, 'user': user.to_dict()})
             flash('Account created successfully!', 'success')
-            return redirect(url_for('home'))
-    
-    return render_template('signup.html')
+            return redirect(url_for('main.home'))
+
+        if request.is_json:
+            return jsonify({'error': 'Invalid form data', 'errors': form.errors}), 400
+        return render_template('signup.html', form=form)
+
+    return render_template('signup.html', form=form)
 
 @app.route('/logout')
 @login_required
