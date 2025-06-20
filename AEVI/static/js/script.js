@@ -239,6 +239,7 @@
     const scrollTop = window.scrollY;
 
     if (scrollTop > document.getElementById('main-nav-bar').offsetTop) {
+      /* document.getElementById('AEVIMainLogo').style.opacity=0;  */
       if (logoCarousel) logoCarousel.style.opacity = '0';
       if (stickyLogo) stickyLogo.style.display = 'block';
       navBar.classList.add('sticky');
@@ -289,3 +290,5 @@
         secondaryNav.addEventListener('mouseenter', () => secondaryNav.classList.add('hovered'));
         secondaryNav.addEventListener('mouseleave', () => secondaryNav.classList.remove('hovered'));
       }
+
+

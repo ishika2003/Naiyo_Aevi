@@ -1,13 +1,14 @@
-<!-- Navigation Header -->
+
 <header id="header" class="scroll-header" style="width: 100%; z-index: 9999; transition: background 0.3s ease;">
-    <div class="primary-banner">
+    <div class="primary-banner" onclick="showNewsletterModal()">
         <p>SIGN UP TO OUR NEWSLETTER FOR 10% OFF</p>
     </div>
 
     <div class="nav-container" id="main-nav-bar">
         <div class="nav-left" style="display: flex; gap: 1.5rem;">
-            <a href="{{ url_for('shop') }}" style="font-weight: 500; text-decoration: none;">SHOP</a>
-            <div class="dropdown" style="position: relative; display: inline-block;">
+            
+            <div class="dropdown" style="position: relative; display: inline-block;display: flex; gap: 1.5rem; align-items: center;"">
+                <a href="{{ url_for('shop') }}" style="font-weight: 500; text-decoration: none;">SHOP</a>
                 <a href="#" style="font-weight: 500; text-decoration: none;" onclick="toggleDropdown()">DISCOVER</a>
                 <div id="discoverDropdown" class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; top: 100%;">
                     <a href="{{ url_for('about') }}" style="color: black; padding: 12px 16px; text-decoration: none; display: block;">About</a>
@@ -17,7 +18,7 @@
             </div>
         </div>
         
-        <div class="logo-sticky" style="position: absolute; left: 50%; transform: translateX(-50%);">
+        <div class="logo-sticky" style="position: absolute; left: 50%; transform: translateX(-50%); text-decoration: none;">
             <a href="{{ url_for('home') }}">
                 <img src="{{ url_for('static', filename='images/AEVI/aevi-logo-100_black.svg') }}" alt="AEVI Logo" style="max-height: 40px;">
             </a>
@@ -26,13 +27,13 @@
         <div class="nav-right" style="display: flex; gap: 1.5rem; align-items: center;">
             <a href="#" style="font-weight: 500; text-decoration: none;">REST OF WORLD / EUR</a>
             
-            <!-- Newsletter Subscribe Button -->
+
             <a href="#" onclick="showNewsletterModal()" style="font-weight: 500; text-decoration: none;">SUBSCRIBE</a>
             
-            <!-- Search Icon -->
+
             <i class="icon icon-search" onclick="toggleSearch()"></i>
             
-            <!-- User Authentication -->
+
             {% if current_user.is_authenticated %}
                 <div class="dropdown" style="position: relative; display: inline-block;">
                     <i class="icon icon-user" onclick="toggleUserDropdown()"></i>
@@ -45,7 +46,7 @@
                 <i class="icon icon-user" onclick="showAuthModal()"></i>
             {% endif %}
             
-            <!-- Cart Icon -->
+
             <div class="cart-icon-container" style="position: relative; cursor: pointer;" onclick="goToCart()">
                 <i class="icon icon-cart"></i>
                 <span id="cart-count" class="cart-count" style="position: absolute; top: -8px; right: -8px; background: #134fc2; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold;">0</span>

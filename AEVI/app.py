@@ -286,6 +286,7 @@ def get_bestsellers():
     products = Product.query.filter_by(is_bestseller=True).all()
     return jsonify([product.to_dict() for product in products])
 
+
 @app.route('/api/products/new')
 def get_new_products():
     """Get new products"""
@@ -834,7 +835,7 @@ def init_db():
                 price=98.00,
                 category='serums-oils',
                 image_main='static/images/nourishing-face-oil.jpg',
-                image_hover='static/images/nourishing-face-oil.jpg',
+                image_hover='static/images/AEVI/two_divs\Aevi-Web-Homepage-Square-01.webp',
                 is_bestseller=True,
                 rating=4.9,
                 review_count=20,
@@ -893,7 +894,7 @@ def init_db():
                 how_to_use='Apply even layer to clean skin, avoid eye area. Leave for 10-15 minutes, rinse with warm water.',
                 benefits='Deep cleanses pores, removes impurities, controls oil, improves skin texture',
                 size_options='75ml',
-                tags='new,clay mask,detox,pore care,deep cleanse'
+                tags='bestseller,new,clay mask,detox,pore care,deep cleanse'
             ),
             Product(
                 name='EYE ELIXIR',
@@ -901,6 +902,7 @@ def init_db():
                 short_description='Awakening Tea Extracts + Brightening Berries',
                 price=62.00,
                 category='treatments',
+                is_bestseller=True,
                 image_main='static/images/AEVI/Page1.webp',
                 image_hover='static/images/AEVI/Page1.webp',
                 rating=4.5,
@@ -909,7 +911,7 @@ def init_db():
                 how_to_use='Gently pat around eye area morning and evening using ring finger.',
                 benefits='Reduces dark circles, minimizes puffiness, firms delicate skin, brightens eye area',
                 size_options='15ml',
-                tags='eye care,dark circles,puffiness,brightening,tea extracts'
+                tags='bestseller,eye care,dark circles,puffiness,brightening,tea extracts'
             ),
             Product(
                 name='LUMI BALM',
