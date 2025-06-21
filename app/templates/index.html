@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- <div style=" position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: red; color: white; padding: 5px; text-align: center;">
+  TEST BANNER — should be touching the top
+</div> -->
+
+  <head>
+    <title>Aevi | Pure Nordic Skincare for Sensitive Skin | Gentle & Sustainable</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- script
+    ================================================== -->
+    <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+  </head>
+  <body>
+
+    <div class="preloader-wrapper" style="background-color: transparent;">
+      <div class="preloader">
+      </div>
+    </div>
+
+    <div class="search-popup">
+      <div class="search-popup-container">
+
+        <form role="search" method="get" class="search-form" action="{{ url_for('static.shop') }}">
+          <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
+          <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
+        </form>
+
+        <h5 class="cat-list-title">Browse Categories</h5>
+        
+        <ul class="cat-list">
+          <li class="cat-list-item">
+            <a href="{{ url_for('static.category_products', category_name='cleansers-masks') }}" title="Cleansers + Masks">Cleansers + Masks</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="{{ url_for('static.category_products', category_name='serums-oils') }}" title="Serums + Oils">Serums + Oils</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="{{ url_for('static.category_products', category_name='balms') }}" title="Balms">Balms</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="{{ url_for('static.category_products', category_name='treatments') }}" title="Treatments">Treatments</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="{{ url_for('static.category_products', category_name='body') }}" title="Body">Body</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="{{ url_for('products.get_bestsellers') }}" title="Bestsellers">Bestsellers</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Carousel -->
+<!-- <header id="header" class="scroll-header" style="width: 100%; z-index: 9999; transition: background 0.3s ease;">
+  <div class="primary-banner">
+    <p>SIGN UP TO OUR NEWSLETTER FOR 10% OFF</p>
+  </div>
+
+  <div class="nav-container" id="main-nav-bar">
+    <div class="nav-left" style="display: flex; gap: 1.5rem;">
+      <a href="{{ url_for('static.shop') }}" style="font-weight: 500; text-decoration: none;">SHOP</a>
+      <a href="#" style="font-weight: 500; text-decoration: none;">DISCOVER</a>
+    </div>
+    <div class="logo-sticky" style="position: absolute; left: 50%; transform: translateX(-50%);">
+      <a href="{{ url_for('static.home') }}" style="text-decoration: none;">
+        <img src="{{ url_for('static', filename='images/AEVI/aevi-logo-100_black.svg') }}" alt="AEVI Logo" style="max-height: 40px; text-decoration: none;">
+      </a>
+    </div>
+    <div class="nav-right" style="display: flex; gap: 1.5rem; align-items: center;">
+      <a href="#" style="font-weight: 500; text-decoration: none;">REST OF WORLD / EUR</a>
+      <a href="#" onclick="showNewsletterModal()" style="font-weight: 500; text-decoration: none;">SUBSCRIBE</a>
+      <i class="icon icon-search"></i>
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('dashboard') }}" style="text-decoration: none;"><i class="icon icon-user"></i></a>
+      {% else %}
+        <i class="icon icon-user" onclick="showAuthModal()"></i>
+      {% endif %}
+      <i class="icon icon-cart"></i>
+    </div>
+  </div>
+</header> -->
+
+<div class="swiper main-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" style="position: relative; background-image: url('{{ url_for('static', filename='images/AEVI/Page1.webp') }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+      <div class="aevi-logo-container" style="position: absolute; top: 24%; left: 50%; transform: translateX(-50%); z-index: 2;" id="aevi-logo-carousel">
+        <img src="{{ url_for('static', filename='images/AEVI/AEVI.svg') }}" id="AEVIMainLogo" alt="AEVI Logo" style="width: 100%;">
+      </div>
+      <div class="desc-container" style="position: absolute; bottom: 10%; left: 5%; z-index: 2; max-width: 600px;">
+        <p style="font-size: 38px; color: white; font-weight: 300; margin-bottom: 25px; line-height: normal;">SKIN DETOX WITH THE<br>CLARIFYING CLAY MASK</p>
+        <div class="btn-wrap">
+          <a href="{{ url_for('static.shop') }}" style="border-radius: 30px; background-color: #a3bfdb; border: 1px solid black; padding: 10px 25px; color: black; font-weight: 500;" class="btn" tabindex="0">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide" style="position: relative;  background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url('{{ url_for('static', filename='images/AEVI/Page2.webp') }}');">
+      <div class="aevi-logo-container" style="position: absolute; top: 24%; left: 50%; transform: translateX(-50%); z-index: 2;">
+        <img src="{{ url_for('static', filename='images/AEVI/AEVI.svg') }}" id="AEVIMainLogo" alt="AEVI Logo" style="transition: opacity 0.5s ease; width: 100%;">
+
+      </div>
+      <div class="desc-container" style="position: absolute; bottom: 10%; left: 5%; z-index: 2; max-width: 600px;">
+        <p style="font-size: 38px; color: white; font-weight: 300; margin-bottom: 25px; line-height: normal;">CLEAN, GENTLE & RESULTS-DRIVEN</p>
+        <div class="btn-wrap">
+          <a href="{{ url_for('static.shop') }}" style="border-radius: 30px; background-color: #a3bfdb; border: 1px solid black; padding: 10px 25px; color: black; font-weight: 500;" class="btn" tabindex="0">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide" style="position: relative; background-image: url('{{ url_for('static', filename='images/AEVI/Page3.webp') }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+      <div class="aevi-logo-container" style="position: absolute; top: 24%; left: 50%; transform: translateX(-50%); z-index: 2;">
+        <img src="{{ url_for('static', filename='images/AEVI/AEVI.svg') }}" id="AEVIMainLogo" alt="AEVI Logo" style="width: 100%;">
+      </div>
+      <div class="desc-container" style="position: absolute; bottom: 10%; left: 5%; z-index: 2; max-width: 600px;">
+        <p style="font-size: 38px; color: white; font-weight: 300; margin-bottom: 25px; line-height: normal;">SKIN DETOX WITH THE CLARIFYING CLAY MASK</p>
+        <div class="btn-wrap">
+          <a href="{{ url_for('static.shop') }}" style="border-radius: 30px; background-color: #a3bfdb; border: 1px solid black; padding: 10px 25px; color: black; font-weight: 500;" class="btn" tabindex="0">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     <!-- FIRST LOGO MARQUEE -->
+
+     <style>
+      .logo-marquee {
+        background-color: #134fc2;
+        overflow: hidden;
+        padding: 1rem 0;
+        position: relative;
+      }
+
+      .logo-track {
+        display: flex;
+        flex-wrap: nowrap;
+        width: max-content;
+        gap: 3rem;
+        animation: scroll-left 17s linear infinite;
+      }
+
+      .logo-track img {
+        height: 40px;
+        width: auto;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        transition: transform 0.3s ease;
+      }
+
+      .logo-track:hover {
+          animation-play-state: paused;
+        }
+
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+
+     </style>
+
+      <div class="logo-marquee">
+        <div class="logo-track">
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-GentlemansJournal-White.webp') }}" alt="Logo 1" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-GetTheGloss-White_b647140e-2ae5-414a-a5ec-14867756c7f9.webp') }}" alt="Logo 2" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-Glamour-White.png') }}" alt="Logo 3" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-RobbReport-White.webp') }}" alt="Logo 4" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-Stylist-White.webp') }}" alt="Logo 5" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-Tirolerin-White.png') }}" alt="Logo 6" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-VanityFair-White.png') }}" alt="Logo 7" />
+
+
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-GentlemansJournal-White.webp') }}" alt="Logo 1" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-GetTheGloss-White_b647140e-2ae5-414a-a5ec-14867756c7f9.webp') }}" alt="Logo 2" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-Glamour-White.png') }}" alt="Logo 3" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-RobbReport-White.webp') }}" alt="Logo 4" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-Stylist-White.webp') }}" alt="Logo 5" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-Tirolerin-White.png') }}" alt="Logo 6" />
+          <img src="{{ url_for('static', filename='images/AEVI/FirstMarqu/Aevi-Website-Press-VanityFair-White.png') }}" alt="Logo 7" />
+        </div>
+      </div>
+
+      <div style="margin: 5px 10px;">
+        <h2 style="line-height: normal; margin-bottom: 0;">BESTSELLERS</h2>
+        <p>Dermatologist-tested and clinically proven formulas with Nordic ingredients</p>
+      </div>
+
+
+      <!-- Products Section - Enhanced with Flask integration -->
+      <style>
+/* Horizontal scroll container */
+.product-scroll-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 2rem 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-scroll-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on WebKit browsers */
+}
+
+/* Wrapper for each product */
+.product-wrapper {
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+}
+
+/* Card with full image, popup inside, no text below */
+.product-card {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  background-color: white;
+}
+/* 
+.product-card:hover {
+  transform: translateY(-6px);
+} */
+
+/* Image section */
+.product-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.product-image .hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card:hover .hover-img {
+  opacity: 1;
+}
+
+.product-card:hover .main-img {
+  opacity: 0;
+}
+
+/* Label (like BESTSELLER) */
+.label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #d5e0ea;
+  color: #134fc2;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 8px;
+  border-radius: 5px;
+}
+
+/* Hover popup inside the card */
+.product-hover-popup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-card:hover .product-hover-popup {
+  display: flex;
+}
+
+.product-hover-popup label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.product-hover-popup select {
+  width: 100%;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  margin: 0;
+}
+
+.product-hover-popup button {
+  background-color: #a3bfdb;
+  color: #000;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+form{
+  margin-bottom: 0;
+}
+
+
+
+.product-hover-popup button:hover {
+  background-color: #90adc9;
+}
+
+/* Optional: info text outside card (if you want to keep it below the card) */
+.product-info {
+  margin-top: 0.5rem;
+  padding: 0 0.5rem;
+  font-family: sans-serif;
+}
+
+.product-info h3 {
+  font-size: 14px;
+  margin: 0 0 0.3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-info p {
+  font-size: 11px;
+  margin: 0 0 0.5rem;
+  color: #444;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stars {
+  font-size: 14px;
+  color: #000;
+}
+
+.product-hover-popup label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 0.3rem;
+  gap: 6px;
+}
+
+.product-hover-popup input[type="radio"] {
+  margin: 0;
+  transform: scale(1.1);
+}
+.product-hover-popup input[type="select"] {
+  margin: 0;
+  transform: scale(1.1);
+}
+
+
+
+      </style>
+
+      <!-- Products will be loaded dynamically from Flask API -->
+      <div class="product-scroll-container" id="bestsellers-container">
+        <!-- Dynamic content will be loaded here -->
+      </div>
+
+      <!-- Rest of the original content preserved -->
+      <style>
+  .aevi-block-section {
+  width: 100vw;
+  overflow: hidden;
+}
+
+.aevi-block-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.aevi-block-image,
+.aevi-block-text {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.aevi-block-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aevi-block-text {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+.aevi-block-text h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.aevi-block-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.aevi-block-readmore {
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: black;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.aevi-block-readmore:hover {
+  color: #134fc2;
+}
+
+
+</style>
+
+ <div class="aevi-block-section">
+
+  <!-- Block 1 -->
+  <div class="aevi-block-container">
+    <div class="aevi-block-image">
+      <img src="{{ url_for('static', filename='images/AEVI/two_divs/Aevi-Web-Homepage-Square-01.webp') }}" alt="Product 1" />
+    </div>
+    <div class="aevi-block-text">
+      <h2>CLEAN, GENTLE<br>+ RESULTS-DRIVEN</h2>
+      <p>
+        Aevi is made with pure, therapeutic ingredients from Nordic nature. Our performance-driven formulas are clinically tested to ensure efficacy and visible results while still being gentle for sensitive skin.
+      </p>
+      <a href="{{ url_for('static.about') }}" class="aevi-block-readmore">READ MORE</a>
+    </div>
+  </div>
+
+  <!-- Block 2 -->
+  <div class="aevi-block-container">
+    <div class="aevi-block-text">
+      <h2>FOR SENSITIVE <br> SKIN, BY<br> SENSITIVE SKIN</h2>
+      <p>
+        Aevi is dermatologically tested and suitable for even the most sensitive skin.<br><br>
+        Our skincare is expertly formulated to soothe, hydrate, nourish and strengthen the skin because we believe building healthy, resilient skin is the key to naturally radiant beauty and well-ageing.
+      </p>
+      <a href="{{ url_for('static.about') }}" class="aevi-block-readmore">READ MORE</a>
+    </div>
+    <div class="aevi-block-image">
+      <img src="{{ url_for('static', filename='images/AEVI/two_divs/Aevi-Web-Homepage-Square-03.webp') }}" alt="Product 2" />
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .review{
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  </style>
+
+<div class="logo-marquee">
+        <div class="logo-track">
+          <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I can't get over the Eye Elixir by Aevi, it makes<br>
+                  me look awake even on the nights that I don't<br>
+                  get enough sleep and it has quickly become an<br>
+                  important part of my morning skin routine!<br><br>
+              </p>
+              <p style="font-size: 8px;">KIRSTEN, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I loveeee the Lumi Balm in the winter. I layer<br>
+                  this over the face oil on high points of my face<br>
+                  and it gives me the most beautiful dewy skin<br>
+                  with the perfect amount of glow without<br>
+                  sparkle. It's amazing for my dry skin.<br><br>
+              </p>
+              <p style="font-size: 8px;">RADHIKA, DERMATOLOGIST</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I have no words for how amazing the<br>
+                  Nourishing Face Oi/is! I can see my skin texture<br>
+                  improving already!<br><br>
+
+              </p>
+              <p style="font-size: 8px;">ANNETTE, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I love the Nourishing Face Oil I have struggled<br>
+                  with eczema all my life and these natural<br>
+                  ingredients don't bother my sensitive skin at all.<br>
+                  I use this oil every day and night. I have<br>
+                  replaced harsh toners with this soothing oil<br>
+                  and I am loving it!<br><br>
+              </p>
+              <p style="font-size: 8px;">WEDNESDAY, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I don't go anywhere without the Clean Hand<br>
+                  Sanitizer. It's my peace of mind.<br><br>
+              </p>
+              <p style="font-size: 8px;">NATASHA, VERIFIED BUYER</p>
+            </div>
+
+             
+          <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I can't get over the Eye Elixir by Aevi, it makes<br>
+                  me look awake even on the nights that I don't<br>
+                  get enough sleep and it has quickly become an<br>
+                  important part of my morning skin routine!<br><br>
+              </p>
+              <p style="font-size: 8px;">KIRSTEN, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I loveeee the Lumi Balm in the winter. I layer<br>
+                  this over the face oil on high points of my face<br>
+                  and it gives me the most beautiful dewy skin<br>
+                  with the perfect amount of glow without<br>
+                  sparkle. It's amazing for my dry skin.<br><br>
+              </p>
+              <p style="font-size: 8px;">RADHIKA, DERMATOLOGIST</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I have no words for how amazing the<br>
+                  Nourishing Face Oil is! I can see my skin texture<br>
+                  improving already!<br><br>
+
+              </p>
+              <p style="font-size: 8px;">ANNETTE, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I love the Nourishing Face Oil I have struggled<br>
+                  with eczema all my life and these natural<br>
+                  ingredients don't bother my sensitive skin at all.<br>
+                  I use this oil every day and night. I have<br>
+                  replaced harsh toners with this soothing oil<br>
+                  and I am loving it!<br><br>
+              </p>
+              <p style="font-size: 8px;">WEDNESDAY, VERIFIED BUYER</p>
+          </div>
+
+           <div class="review">
+              <div class="stars2">★★★★★</div>
+              <p style="font-size: 14px;">
+                  I don't go anywhere without the Clean Hand<br>
+                  Sanitizer. It's my peace of mind.<br><br>
+              </p>
+              <p style="font-size: 8px;">NATASHA, VERIFIED BUYER</p>
+            </div>
+
+        </div>
+      </div>
+      
+
+       <div style="margin: 5px 10px;">
+        <h2 style="line-height: normal; margin-bottom: 0;">GIFTS, SETS + BUNDLES</h2>
+        <p>Curated edits of bestselling clean beauty</p>
+      </div>
+
+     <div class="product-scroll-container" id="new-products-container"></div>
+
+<style>
+  .three-image-section {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.left-section {
+  display: flex;
+  flex: 2;
+  gap: 1rem;
+}
+
+.left-left,
+.left-right,
+.right-section {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-box h2 {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.right-section {
+  flex: 1.3;
+}
+
+</style>
+
+<section class="three-image-section">
+  <div class="left-section">
+    <div class="left-left image-box">
+      <img src="static/images/image-a.jpg" alt="A">
+      <h2>Left A</h2>
+    </div>
+    <div class="left-right image-box">
+      <img src="static/images/image-b.jpg" alt="B">
+      <h2>Left B</h2>
+    </div>
+  </div>
+  <div class="right-section image-box">
+    <img src="static/images/image-c.jpg" alt="C">
+    <h2>Right C</h2>
+  </div>
+</section>
+
+
+      
+
+          <style>
+      .aevi-footer {
+  background: #d5e0ea;
+  padding: 4rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #111;
+}
+
+.aevi-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: space-between;
+}
+
+.aevi-footer-left {
+  flex: 1 1 300px;
+  min-width: 300px;
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 2rem;
+}
+
+.footer-newsletter h4 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.footer-newsletter p {
+  font-size: 16px;
+  margin-bottom: 2rem;
+}
+
+.newsletter-input {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+}
+
+.newsletter-input input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  flex: 1;
+}
+
+.newsletter-input button {
+  border: none;
+  background: transparent;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.footer-payments {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-payments img {
+  height: 24px;
+}
+
+.footer-address {
+  font-size: 12px;
+  color: #333;
+  margin-top: 2rem;
+}
+
+.aevi-footer-links {
+  flex: 1 1 600px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.aevi-footer-links h5 {
+  font-size: 13px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.aevi-footer-links a {
+  display: block;
+  font-size: 16px;
+  color: #111;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.aevi-footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+    </style>
+
+
+    <footer class="aevi-footer">
+  <div class="aevi-footer-container">
+
+    <!-- Left Column -->
+    <div class="aevi-footer-left">
+      <img src="{{ url_for('static', filename='images/aevi_animated_logo_gif.webp') }}" alt="AEVI Logo" class="footer-logo" />
+
+      <div class="footer-newsletter">
+        <h4>LET'S CONNECT</h4>
+        <p>Subscribe to our newsletter and get 10% off your first order.</p>
+        <form method="post" action="#">
+          <div class="newsletter-input">
+            <input type="email" placeholder="Your email" required />
+            <button type="submit">SUBSCRIBE</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="footer-payments">
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/amex.png') }}" alt="Amex" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/apay.png') }}" alt="Apple Pay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/images.png') }}" alt="Google Pay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/mastercard.png') }}" alt="Mastercard" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/paypal.png') }}" alt="PayPal" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/maestro.png') }}" alt="Shop Pay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/amex.png') }}" alt="UnionPay" />
+        <img src="{{ url_for('static', filename='images/AEVI/FooterIcons/visa.jpg') }}" alt="Visa" />
+      </div>
+
+      <p class="footer-address">
+        © 2025 Aevi Wellness - Aevi Wellness AB, Klocka 185, 837 71 Duved, Sweden
+      </p>
+    </div>
+
+    <!-- Right Columns -->
+    <div class="aevi-footer-links">
+      <div>
+        <h5>ABOUT</h5>
+        <a href="#">Story</a>
+        <a href="#">Stockists</a>
+        <a href="#">Contact</a>
+        <a href="#">Journal</a>
+      </div>
+
+      <div>
+        <h5>LEGAL</h5>
+        <a href="#">FAQ</a>
+        <a href="#">Terms</a>
+        <a href="#">Care</a>
+        <a href="#">Privacy</a>
+      </div>
+
+      <div>
+        <h5>SOCIAL MEDIA</h5>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      <!-- Include modals for newsletter and auth -->
+      {% include 'navbar.html' %}
+
+    <!-- JavaScript from original file + Flask integration -->
+    <script src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Flask Integration JavaScript -->
+    <script>
+      // Load bestsellers on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        loadBestsellers();
+      });
+
+      function loadBestsellers() {
+        fetch('/api/products/bestsellers')
+        .then(response => response.json())
+        .then(products => {
+          renderBestsellers(products);
+        })
+        .catch(error => {
+          console.error('Error loading bestsellers:', error);
+          // Fallback to static content if API fails
+          loadStaticProducts();
+        });
+      }
+
+      function renderBestsellers(products) {
+  const container = document.getElementById('bestsellers-container');
+  container.innerHTML = products.map(product => `
+    <div class="product-wrapper">
+      <div class="product-card" onclick="goToProduct(${product.id})">
+        <div class="product-image">
+          <img src="${product.image_main || '{{ url_for("static", filename="images/AEVI/Cards/Card1_2.png") }}'}" alt="${product.name}" class="main-img">
+          ${product.image_hover ? `<img src="${product.image_hover}" alt="${product.name}" class="hover-img">` : ''}
+          ${product.is_bestseller ? '<span class="label">BESTSELLER</span>' : ''}
+          ${product.is_new ? '<span class="label">NEW</span>' : ''}
+        </div>
+        <div class="product-hover-popup">
+          <form>
+            <label>
+              <input type="radio" name="delivery-${product.id}" checked>
+              Subscribe + save 15%
+            </label>
+            <select>
+              <option>Every 30 days</option>
+              <option>Every 60 days</option>
+            </select>
+            <label>
+              <input type="radio" name="delivery-${product.id}">
+              One time delivery
+            </label>
+            <button type="button" onclick="event.stopPropagation(); addToCart(${product.id})">ADD TO BAG</button>
+          </form>
+        </div>
+      </div>
+      <div class="product-info">
+        <h3>${product.name} <span class="price">€${product.price}</span></h3>
+        <p>${product.description}</p>
+        <div class="stars">★★★★★ <span>(${product.review_count})</span></div>
+      </div>
+    </div>
+  `).join('');
+} 
+
+
+        function renderNew(products) {
+  const container = document.getElementById('new-products-container');
+  container.innerHTML = products.map(product => `
+    <div class="product-wrapper">
+      <div class="product-card" onclick="goToProduct(${product.id})">
+        <div class="product-image">
+          <img src="${product.image_main}" alt="${product.name}" class="main-img">
+          ${product.image_hover ? `<img src="${product.image_hover}" alt="${product.name}" class="hover-img">` : ''}
+          ${product.is_bestseller ? '<span class="label">BESTSELLER</span>' : ''}
+          ${product.is_new ? '<span class="label">NEW</span>' : ''}
+        </div>
+        <div class="product-hover-popup">
+          <form>
+            <label>
+              <input type="radio" name="delivery-${product.id}" checked>
+              Subscribe + save 15%
+            </label>
+            <select>
+              <option>Every 30 days</option>
+              <option>Every 60 days</option>
+            </select>
+            <label>
+              <input type="radio" name="delivery-${product.id}">
+              One time delivery
+            </label>
+            <button type="button" onclick="event.stopPropagation(); addToCart(${product.id})">ADD TO BAG</button>
+          </form>
+        </div>
+      </div>
+      <div class="product-info">
+        <h3>${product.name} <span class="price">€${product.price}</span></h3>
+        <p>${product.description}</p>
+        <div class="stars">★★★★★ <span>(${product.review_count})</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+document.addEventListener('DOMContentLoaded', function() {
+    
+      const newProducts = sample_products.filter(p => p.is_new);
+        renderNew(newProducts);
+
+});
+
+
+      function loadStaticProducts() {
+        // Fallback static products if API fails
+        const staticProducts = [
+          {
+            id: 1, name: 'NOURISHING FACE OIL', price: 98, 
+            description: 'Radiance Enhancing Nordic Super Berries',
+            image_main: '{{ url_for("static", filename="images/AEVI/Cards/Card1_2.png") }}',
+            image_hover: '{{ url_for("static", filename="images/AEVI/two_divs/Aevi-Web-Homepage-Square-01.webp") }}',
+            is_bestseller: true, review_count: 20
+          },
+          {
+            id: 2, name: 'HYALURONIC ACID FACE SERUM', price: 94,
+            description: 'Super Hydrating Seaweed + Tremella',
+            image_main: '{{ url_for("static", filename="images/AEVI/Cards/Card2_2.png") }}',
+            image_hover: '{{ url_for("static", filename="images/AEVI/Cards/card2_1.webp") }}',
+            is_bestseller: true, review_count: 15
+          }
+        ];
+        renderBestsellers(staticProducts);
+      }
+
+      function goToProduct(productId) {
+        window.location.href = `/product/${productId}`;
+      }
+
+      function addToCart(productId) {
+        // Add to cart functionality
+        console.log('Adding product to cart:', productId);
+        alert('Product added to cart!');
+      }
+
+      // Newsletter and authentication functions are defined in base.html
+
+      // Modal functions
+      function showNewsletterModal() {
+        document.getElementById('newsletterModal').style.display = 'block';
+      }
+
+      function closeNewsletterModal() {
+        document.getElementById('newsletterModal').style.display = 'none';
+      }
+
+      function showAuthModal() {
+        document.getElementById('authModal').style.display = 'block';
+      }
+
+      function closeAuthModal() {
+        document.getElementById('authModal').style.display = 'none';
+      }
+
+      function showSignUpForm() {
+        document.getElementById('signinForm').style.display = 'none';
+        document.getElementById('signupForm').style.display = 'block';
+      }
+
+      function showSignInForm() {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('signinForm').style.display = 'block';
+      }
+
+      function handleNewsletterSubmit(event) {
+        event.preventDefault();
+        const email = document.getElementById('newsletterEmail').value;
+        subscribeNewsletter(email);
+        closeNewsletterModal();
+      }
+
+      function handleSignIn(event) {
+        event.preventDefault();
+        const email = document.getElementById('signinEmail').value;
+        const password = document.getElementById('signinPassword').value;
+        signIn(email, password);
+        closeAuthModal();
+      }
+
+      function handleSignUp(event) {
+        event.preventDefault();
+        const userData = {
+          first_name: document.getElementById('signupFirstName').value,
+          last_name: document.getElementById('signupLastName').value,
+          email: document.getElementById('signupEmail').value,
+          password: document.getElementById('signupPassword').value
+        };
+        signUp(userData);
+        closeAuthModal();
+      }
+    </script>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletterModal" class="modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: none; width: 80%; max-width: 500px; border-radius: 10px;">
+            <span class="close" onclick="closeNewsletterModal()" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+            <h2>Subscribe to our Newsletter</h2>
+            <p>Get 10% off your first order and stay updated with our latest products!</p>
+            <form onsubmit="handleNewsletterSubmit(event)">
+                <input type="email" id="newsletterEmail" placeholder="Enter your email" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                <button type="submit" style="background-color: #a3bfdb; color: black; padding: 10px 20px; border: 1px solid black; border-radius: 30px; cursor: pointer; width: 100%;">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: none; width: 80%; max-width: 400px; border-radius: 10px;">
+            <span class="close" onclick="closeAuthModal()" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+            
+            <div id="signinForm">
+                <h2>Sign In</h2>
+                <form onsubmit="handleSignIn(event)">
+                    <input type="email" id="signinEmail" placeholder="Email" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="password" id="signinPassword" placeholder="Password" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    <button type="submit" style="background-color: #a3bfdb; color: black; padding: 10px 20px; border: 1px solid black; border-radius: 30px; cursor: pointer; width: 100%; margin: 10px 0;">Sign In</button>
+                </form>
+                <p style="text-align: center;">Don't have an account? <a href="#" onclick="showSignUpForm()" style="color: #134fc2;">Sign Up</a></p>
+            </div>
+            
+            <div id="signupForm" style="display: none;">
+                <h2>Sign Up</h2>
+                <form onsubmit="handleSignUp(event)">
+                    <input type="text" id="signupFirstName" placeholder="First Name" style="width: 48%; padding: 10px; margin: 10px 1% 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="text" id="signupLastName" placeholder="Last Name" style="width: 48%; padding: 10px; margin: 10px 0 10px 1%; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="email" id="signupEmail" placeholder="Email" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="password" id="signupPassword" placeholder="Password" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    <button type="submit" style="background-color: #a3bfdb; color: black; padding: 10px 20px; border: 1px solid black; border-radius: 30px; cursor: pointer; width: 100%; margin: 10px 0;">Sign Up</button>
+                </form>
+                <p style="text-align: center;">Already have an account? <a href="#" onclick="showSignInForm()" style="color: #134fc2;">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
