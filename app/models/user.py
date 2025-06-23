@@ -13,6 +13,10 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(50), nullable=True)
     is_subscribed = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    is_confirmed = db.Column(db.Boolean, default=False)
+    confirmed_on = db.Column(db.DateTime, nullable=True)
+    reset_token = db.Column(db.String(255), nullable=True)
+    reset_token_expiry = db.Column(db.DateTime, nullable=True)
 
     def to_dict(self):
         return {
