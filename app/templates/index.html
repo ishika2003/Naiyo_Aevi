@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- <div style=" position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: red; color: white; padding: 5px; text-align: center;">
-  TEST BANNER — should be touching the top
-</div> -->
-
   <head>
     <title>Aevi | Pure Nordic Skincare for Sensitive Skin | Gentle & Sustainable</title>
     <meta charset="utf-8">
@@ -26,7 +22,7 @@
     ================================================== -->
     <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
   </head>
-  <body>
+  <body style="padding: 0; margin: 0;">
 
     <div class="preloader-wrapper" style="background-color: transparent;">
       <div class="preloader">
@@ -208,14 +204,16 @@
 
       <!-- Products Section - Enhanced with Flask integration -->
       <style>
-/* Horizontal scroll container */
-.product-scroll-container {
+/* Horizontal scroll container */.product-scroll-container {
   display: flex;
+  flex-wrap: nowrap; /* ⬅️ Important: don't wrap items */
   gap: 1.5rem;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 2rem 1rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  white-space: nowrap; /* ⬅️ Ensures horizontal scrolling */
 }
 
 .product-scroll-container::-webkit-scrollbar {
@@ -241,10 +239,6 @@
   cursor: pointer;
   background-color: white;
 }
-/* 
-.product-card:hover {
-  transform: translateY(-6px);
-} */
 
 /* Image section */
 .product-image {
@@ -304,6 +298,8 @@
   display: none;
   flex-direction: column;
   gap: 0.5rem;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .product-card:hover .product-hover-popup {
@@ -314,8 +310,8 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-
   gap: 8px;
+  margin-bottom: 0.3rem;
 }
 
 .product-hover-popup select {
@@ -339,14 +335,13 @@
   font-size: 14px;
   transition: background-color 0.3s ease;
 }
-form{
-  margin-bottom: 0;
-}
-
-
 
 .product-hover-popup button:hover {
   background-color: #90adc9;
+}
+
+form {
+  margin-bottom: 0;
 }
 
 /* Optional: info text outside card (if you want to keep it below the card) */
@@ -379,22 +374,31 @@ form{
   color: #000;
 }
 
-.product-hover-popup label {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  margin-bottom: 0.3rem;
-  gap: 6px;
-}
-
 .product-hover-popup input[type="radio"] {
   margin: 0;
   transform: scale(1.1);
 }
+
 .product-hover-popup input[type="select"] {
   margin: 0;
   transform: scale(1.1);
 }
+
+/* Fix for last card cutoff */
+.product-wrapper:last-child {
+  padding-right: 1rem;
+}
+.product-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 1.5rem;
+  white-space: nowrap;
+}
+
+
 
 
 
@@ -643,62 +647,66 @@ form{
   display: flex;
   gap: 1rem;
   padding: 2rem;
+  flex-wrap: wrap;
 }
 
-.left-section {
-  display: flex;
-  flex: 2;
-  gap: 1rem;
-}
-
-.left-left,
-.left-right,
-.right-section {
+/* Common box style */
+.image-box {
   position: relative;
   flex: 1;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 12px;
+  display: block;
+  text-decoration: none;
 }
 
+/* Make right div equal to left two combined */
+.image-box.wide {
+  flex: 2;
+}
+
+/* Image styling + hover zoom */
 .image-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
   display: block;
 }
 
+.image-box:hover img {
+  transform: scale(1.05);
+}
+
+/* Heading at bottom-left */
 .image-box h2 {
   position: absolute;
   bottom: 10px;
   left: 15px;
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: white;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  font-weight: 200;
 }
 
-.right-section {
-  flex: 1.3;
-}
 
 </style>
-
 <section class="three-image-section">
-  <div class="left-section">
-    <div class="left-left image-box">
-      <img src="static/images/image-a.jpg" alt="A">
-      <h2>Left A</h2>
-    </div>
-    <div class="left-right image-box">
-      <img src="static/images/image-b.jpg" alt="B">
-      <h2>Left B</h2>
-    </div>
-  </div>
-  <div class="right-section image-box">
-    <img src="static/images/image-c.jpg" alt="C">
-    <h2>Right C</h2>
-  </div>
+  <a href="/link-a" class="image-box">
+        <img src="{{ url_for('static', filename='images/AEVI/Page3.webp') }}" alt="C">
+
+    <h2>BESTSELLERS</h2>
+  </a>
+  <a href="/link-b" class="image-box">
+        <img src="{{ url_for('static', filename='images/AEVI/two_divs/Aevi-Web-Homepage-Square-03.webp') }}" alt="C">
+
+    <h2>NEW IN</h2>
+  </a>
+  <a href="/link-c" class="image-box wide">
+        <img src="{{ url_for('static', filename='images/nourishing-face-oil.jpg') }}" alt="C">
+    <h2>FACE CARE</h2>
+  </a>
 </section>
 
 
@@ -906,39 +914,42 @@ form{
       function renderBestsellers(products) {
   const container = document.getElementById('bestsellers-container');
   container.innerHTML = products.map(product => `
-    <div class="product-wrapper">
-      <div class="product-card" onclick="goToProduct(${product.id})">
-        <div class="product-image">
-          <img src="${product.image_main || '{{ url_for("static", filename="images/AEVI/Cards/Card1_2.png") }}'}" alt="${product.name}" class="main-img">
-          ${product.image_hover ? `<img src="${product.image_hover}" alt="${product.name}" class="hover-img">` : ''}
-          ${product.is_bestseller ? '<span class="label">BESTSELLER</span>' : ''}
-          ${product.is_new ? '<span class="label">NEW</span>' : ''}
-        </div>
-        <div class="product-hover-popup">
-          <form>
-            <label>
-              <input type="radio" name="delivery-${product.id}" checked>
-              Subscribe + save 15%
-            </label>
-            <select>
-              <option>Every 30 days</option>
-              <option>Every 60 days</option>
-            </select>
-            <label>
-              <input type="radio" name="delivery-${product.id}">
-              One time delivery
-            </label>
-            <button type="button" onclick="event.stopPropagation(); addToCart(${product.id})">ADD TO BAG</button>
-          </form>
-        </div>
+  <div class="product-wrapper">
+    <div class="product-card" onclick="goToProduct(${product.id})">
+      <div class="product-image">
+        <img src="${product.image_main || '{{ url_for("static", filename="images/AEVI/Cards/Card1_2.png") }}'}" alt="${product.name}" class="main-img">
+        ${product.image_hover ? `<img src="${product.image_hover}" alt="${product.name}" class="hover-img">` : ''}
+        ${product.is_bestseller ? '<span class="label">BESTSELLER</span>' : ''}
+        ${product.is_new ? '<span class="label">NEW</span>' : ''}
       </div>
-      <div class="product-info">
-        <h3>${product.name} <span class="price">€${product.price}</span></h3>
-        <p>${product.description}</p>
-        <div class="stars">★★★★★ <span>(${product.review_count})</span></div>
+
+      <div class="product-hover-popup">
+        <form onClick="event.stopPropagation();">
+          <label>
+            <input type="radio" name="delivery-${product.id}" checked>
+            Subscribe + save 15%
+          </label>
+          <select>
+            <option>Every 30 days</option>
+            <option>Every 60 days</option>
+          </select>
+          <label>
+            <input type="radio" name="delivery-${product.id}">
+            One time delivery
+          </label>
+          <button type="button" onclick="addToCart(${product.id})">ADD TO BAG</button>
+        </form>
       </div>
     </div>
-  `).join('');
+
+    <div class="product-info">
+      <h3>${product.name} <span class="price">€${product.price}</span></h3>
+      <p>${product.description}</p>
+      <div class="stars">★★★★★ <span>(${product.review_count})</span></div>
+    </div>
+  </div>
+`).join('');
+
 } 
 
 
